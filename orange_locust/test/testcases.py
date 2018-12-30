@@ -12,8 +12,8 @@ import six
 from flask import (Flask, Response, make_response, redirect, request,
                    send_file, stream_with_context)
 
-from locust import events
-from locust.stats import global_stats
+from orange_locust import events
+from orange_locust.stats import global_stats
 
 
 app = Flask(__name__)

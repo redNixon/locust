@@ -1,8 +1,8 @@
 import six
 
-from locust import InterruptTaskSet, ResponseError
-from locust.core import HttpLocust, Locust, TaskSet, events, task
-from locust.exception import (CatchResponseError, LocustError, RescheduleTask,
+from orange_locust import InterruptTaskSet, ResponseError
+from orange_locust.core import HttpLocust, Locust, TaskSet, events, task
+from orange_locust.exception import (CatchResponseError, LocustError, RescheduleTask,
                               RescheduleTaskImmediately)
 
 from .testcases import LocustTestCase, WebserverTestCase
@@ -300,7 +300,7 @@ class TestTaskSet(LocustTestCase):
 
     
     def test_parent_attribute(self):
-        from locust.exception import StopLocust
+        from orange_locust.exception import StopLocust
         parents = {}
         
         class SubTaskSet(TaskSet):
@@ -412,7 +412,7 @@ class TestWebLocustClass(WebserverTestCase):
         self.assertEqual(401, unauthorized.client.get("/basic_auth").status_code)
     
     def test_log_request_name_argument(self):
-        from locust.stats import global_stats
+        from orange_locust.stats import global_stats
         self.response = ""
         
         class MyLocust(HttpLocust):
@@ -452,7 +452,7 @@ class TestWebLocustClass(WebserverTestCase):
         l = MyLocust()
         l.client.get("/redirect")
         
-        from locust.stats import global_stats
+        from orange_locust.stats import global_stats
         self.assertEqual(1, len(global_stats.entries))
         self.assertEqual(1, global_stats.get("/redirect", "GET").num_requests)
         self.assertEqual(0, global_stats.get("/ultra_fast", "GET").num_requests)

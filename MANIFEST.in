@@ -1,3 +1,3 @@
 include LICENSE
-recursive-include locust/static *
-recursive-include locust/templates *
+recursive-include orange_locust/static *
+recursive-include orange_locust/templates *

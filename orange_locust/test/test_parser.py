@@ -1,6 +1,6 @@
 import unittest
 
-from locust.main import parse_options
+from orange_locust.main import parse_options
 
 
 class TestParser(unittest.TestCase):

@@ -5,14 +5,14 @@ from gevent import sleep
 from gevent.queue import Queue
 
 import mock
-from locust import events
-from locust.core import Locust, TaskSet, task
-from locust.exception import LocustError
-from locust.main import parse_options
-from locust.rpc import Message
-from locust.runners import LocalLocustRunner, MasterLocustRunner
-from locust.stats import global_stats, RequestStats
-from locust.test.testcases import LocustTestCase
+from orange_locust import events
+from orange_locust.core import Locust, TaskSet, task
+from orange_locust.exception import LocustError
+from orange_locust.main import parse_options
+from orange_locust.rpc import Message
+from orange_locust.runners import LocalLocustRunner, MasterLocustRunner
+from orange_locust.stats import global_stats, RequestStats
+from orange_locust.test.testcases import LocustTestCase
 
 
 def mocked_rpc_server():
@@ -58,7 +58,7 @@ class TestMasterRunner(LocustTestCase):
         class MyTestLocust(Locust):
             pass
         
-        with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+        with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
             master = MasterLocustRunner(MyTestLocust, self.options)
             server.mocked_send(Message("client_ready", None, "zeh_fake_client1"))
             self.assertEqual(1, len(master.clients))
@@ -75,7 +75,7 @@ class TestMasterRunner(LocustTestCase):
         class MyTestLocust(Locust):
             pass
         
-        with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+        with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
             master = MasterLocustRunner(MyTestLocust, self.options)
             server.mocked_send(Message("client_ready", None, "fake_client"))
             
@@ -95,7 +95,7 @@ class TestMasterRunner(LocustTestCase):
         class MyTestLocust(Locust):
             pass
         
-        with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+        with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
             master = MasterLocustRunner(MyTestLocust, self.options)
             server.mocked_send(Message("client_ready", None, "fake_client"))
             stats = RequestStats()
@@ -125,7 +125,7 @@ class TestMasterRunner(LocustTestCase):
         with mock.patch("time.time") as mocked_time:
             mocked_time.return_value = start_time
             global_stats.reset_all()
-            with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+            with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
                 master = MasterLocustRunner(MyTestLocust, self.options)
                 mocked_time.return_value += 1
                 server.mocked_send(Message("client_ready", None, "fake_client"))
@@ -198,7 +198,7 @@ class TestMasterRunner(LocustTestCase):
         class MyTestLocust(Locust):
             pass
         
-        with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+        with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
             master = MasterLocustRunner(MyTestLocust, self.options)
             for i in range(5):
                 server.mocked_send(Message("client_ready", None, "fake_client%i" % i))
@@ -216,7 +216,7 @@ class TestMasterRunner(LocustTestCase):
         class MyTestLocust(Locust):
             pass
         
-        with mock.patch("locust.rpc.rpc.Server", mocked_rpc_server()) as server:
+        with mock.patch("orange_locust.rpc.rpc.Server", mocked_rpc_server()) as server:
             master = MasterLocustRunner(MyTestLocust, self.options)
             for i in range(5):
                 server.mocked_send(Message("client_ready", None, "fake_client%i" % i))

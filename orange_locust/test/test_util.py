@@ -1,5 +1,5 @@
 import unittest
-from locust.util.time import parse_timespan
+from orange_locust.util.time import parse_timespan
 
 
 class TestParseTimespan(unittest.TestCase):

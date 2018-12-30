@@ -8,9 +8,9 @@ import gevent
 import requests
 from gevent import pywsgi
 
-from locust import events, runners, stats, web
-from locust.main import parse_options
-from locust.runners import LocustRunner
+from orange_locust import events, runners, stats, web
+from orange_locust.main import parse_options
+from orange_locust.runners import LocustRunner
 from six.moves import StringIO
 
 from .testcases import LocustTestCase

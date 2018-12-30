@@ -12,7 +12,7 @@ import six
 from flask import Flask, make_response, jsonify, render_template, request
 from gevent import pywsgi
 
-from locust import __version__ as version
+from orange_locust import __version__ as version
 from six.moves import StringIO, xrange
 
 from . import runners

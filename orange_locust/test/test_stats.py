@@ -1,10 +1,10 @@
 import time
 import unittest
 
-from locust.core import HttpLocust, TaskSet, task
-from locust.inspectlocust import get_task_ratio_dict
-from locust.rpc.protocol import Message
-from locust.stats import CachedResponseTimes, RequestStats, StatsEntry, diff_response_time_dicts, global_stats
+from orange_locust.core import HttpLocust, TaskSet, task
+from orange_locust.inspectlocust import get_task_ratio_dict
+from orange_locust.rpc.protocol import Message
+from orange_locust.stats import CachedResponseTimes, RequestStats, StatsEntry, diff_response_time_dicts, global_stats
 from six.moves import xrange
 
 from .testcases import WebserverTestCase

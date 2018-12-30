@@ -1,5 +1,5 @@
-from locust import main
-from locust.core import HttpLocust, Locust, TaskSet
+from orange_locust import main
+from orange_locust.core import HttpLocust, Locust, TaskSet
 
 from .testcases import LocustTestCase
 
